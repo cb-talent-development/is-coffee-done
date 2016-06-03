@@ -1,5 +1,6 @@
 import random
 import time
+from slackclient import SlackClient
 
 def average_temperature(time_range):
   total = 0
@@ -18,16 +19,22 @@ def is_it_brewing(temperature):
 def is_it_done(temperature):
   return temperature < 190
 
+def send_slack_notification(message):
+  token = "xoxb-47834520726-tLpLpwmW24mHBmgdMFqSRtZm"
+  sc = SlackClient(token)
+  sc.api_call(
+    "chat.postMessage", channel="general", text='<!here> ' + message, username='coffee_bot', icon_emoji=':coffee:'
+  )
+
 if __name__ == "__main__":
   done = False
   while True:
     temperature = average_temperature(10)
     print temperature
-    if is_it_brewing(temperature):
-      print "it's brewing"
+    if is_it_brewing(temperature) and not done:
+      send_slack_notification("Coffee is brewing..")
       done = True
     elif is_it_done(temperature) and done:
       print "it's done"
-      # SlackBot.send_notification("Coffee is ready to go!")
-      print "Slack message! It's done!"
+      send_slack_notification("Coffee is ready to go!")
       done = False
