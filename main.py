@@ -15,13 +15,13 @@ def current_temperature():
   return sensor.get_temperature(W1ThermSensor.DEGREES_F)
 
 def is_it_brewing(temperature):
-  return temperature > 200
+  return temperature > 170
 
 def is_it_done(temperature):
-  return temperature < 190
+  return temperature < 160
 
 def send_slack_notification(message):
-  token = "xoxb-47834520726-6slU2blCnIFTHgMrlisaIQTK"
+  token = "xoxb-47834520726-N3otsrwj8DC1Lcs8GhiRZsX1"
   sc = SlackClient(token)
   sc.api_call(
     "chat.postMessage", channel="general", text='<!here> ' + message, username='coffee_bot', icon_emoji=':coffee:'
