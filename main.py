@@ -21,7 +21,7 @@ def is_it_done(temperature):
   return temperature < 190
 
 def send_slack_notification(message):
-  token = "xoxb-47834520726-tLpLpwmW24mHBmgdMFqSRtZm"
+  token = "xoxb-47834520726-6slU2blCnIFTHgMrlisaIQTK"
   sc = SlackClient(token)
   sc.api_call(
     "chat.postMessage", channel="general", text='<!here> ' + message, username='coffee_bot', icon_emoji=':coffee:'
