@@ -1,17 +1,18 @@
 import random
 import time
 from slackclient import SlackClient
+from w1thermsensor import W1ThermSensor
 
 def average_temperature(time_range):
   total = 0
   for _ in range(time_range):
-    total = total + random.randrange(150, 250)
+    total = total + current_temperature()
     time.sleep(1)
   average_temperature = total / time_range
   return average_temperature
 
 def current_temperature():
-  return random.randrange(190, 205)
+  return sensor.get_temperature(W1ThermSensor.DEGREES_F)
 
 def is_it_brewing(temperature):
   return temperature > 200
@@ -27,14 +28,13 @@ def send_slack_notification(message):
   )
 
 if __name__ == "__main__":
+  sensor = W1ThermSensor()
   done = False
   while True:
     temperature = average_temperature(10)
-    print temperature
     if is_it_brewing(temperature) and not done:
       send_slack_notification("Coffee is brewing..")
       done = True
     elif is_it_done(temperature) and done:
-      print "it's done"
       send_slack_notification("Coffee is ready to go!")
       done = False
