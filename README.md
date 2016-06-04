@@ -1,6 +1,6 @@
 #Is Coffee Done
 
-Have you ever found yourself getting up to check the coffee pot, wasting precious seconds? Waste no more! *Mr. Coffee the coffee bot* will tell you and your team when it's time to caffeinate!
+Have you ever found yourself getting up to check the coffee pot, wasting precious seconds? Waste no more! **Mr. Coffee the Coffee Bot** will tell you and your team when it's time to caffeinate!
 
 ##You Will Need
  - Raspberry Pi
@@ -13,7 +13,7 @@ Have you ever found yourself getting up to check the coffee pot, wasting preciou
  - more things...
 
 ##Raspberry Pi and Temperature Sensor Configuration
-Configure according to the tutorial here: https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/overview
+Configure according to [Adafruit's Raspberry Pi and DS18B20](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/overview) tutorial.
 
 ##Slackbot Configuration
 Make a custom Slack bot
